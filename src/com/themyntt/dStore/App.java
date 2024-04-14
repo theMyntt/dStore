@@ -36,7 +36,7 @@ public class App extends JFrame {
                     UserEntity user = util.getUser(email, password);
 
                     if (user != null) {
-                        JOptionPane.showMessageDialog(null, "Bem-vindo, " + user.name + "!");
+                        JOptionPane.showMessageDialog(null, "Welcome " + user.name + "!");
 
                         EmailField.setText("");
                         PasswordField.setText("");
@@ -45,11 +45,11 @@ public class App extends JFrame {
                         MainPanel.revalidate();
                         MainPanel.repaint();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Credenciais inválidas.");
+                        JOptionPane.showMessageDialog(null, "Incorrect email or password.");
                     }
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Erro ao obter detalhes do usuário. Por favor, tente novamente mais tarde.");
+                    JOptionPane.showMessageDialog(null, "Internal Server Error: 500");
                 }
             }
         });
