@@ -1,5 +1,6 @@
 package com.themyntt.dStore;
 
+import com.sun.tools.javac.Main;
 import com.themyntt.dStore.entity.UserEntity;
 import com.themyntt.dStore.utils.Utils;
 
@@ -16,6 +17,14 @@ public class App extends JFrame {
     private JPasswordField PasswordField;
     private JButton LoginBtn;
     private JPanel HomePage;
+    private JLabel HomeName;
+    private JButton newProductButton;
+    private JButton newClientUserButton;
+    private JButton newCollaboratorButton;
+    private JButton seeProductsButton;
+    private JButton ExitButton;
+    private JButton seeClientsUsersButton;
+    private JButton seeCollaboratorsButton;
     private Utils util;
 
     public App() {
@@ -40,6 +49,7 @@ public class App extends JFrame {
 
                         EmailField.setText("");
                         PasswordField.setText("");
+                        HomeName.setText("Welcome, " + user.name);
                         MainPanel.removeAll();
                         MainPanel.add(HomePage);
                         MainPanel.revalidate();
@@ -51,6 +61,15 @@ public class App extends JFrame {
                     ex.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Internal Server Error: 500");
                 }
+            }
+        });
+        ExitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPanel.removeAll();
+                MainPanel.add(LoginPage);
+                MainPanel.revalidate();
+                MainPanel.repaint();
             }
         });
     }
