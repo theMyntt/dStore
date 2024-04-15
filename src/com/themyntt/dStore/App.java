@@ -25,6 +25,8 @@ public class App extends JFrame {
     private JButton ExitButton;
     private JButton seeClientsUsersButton;
     private JButton seeCollaboratorsButton;
+    private JPanel NewProductPage;
+    private JButton backToHomeButton;
     private Utils util;
 
     public App() {
@@ -68,6 +70,24 @@ public class App extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 MainPanel.removeAll();
                 MainPanel.add(LoginPage);
+                MainPanel.revalidate();
+                MainPanel.repaint();
+            }
+        });
+        newProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPanel.removeAll();
+                MainPanel.add(NewProductPage);
+                MainPanel.revalidate();
+                MainPanel.repaint();
+            }
+        });
+        backToHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainPanel.remove(NewProductPage);
+                MainPanel.add(HomePage);
                 MainPanel.revalidate();
                 MainPanel.repaint();
             }
