@@ -42,7 +42,6 @@ public class Utils {
                     user.company = value;
                     break;
                 default:
-                    // Outro campo não reconhecido
                     break;
             }
         }
