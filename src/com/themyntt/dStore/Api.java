@@ -1,4 +1,4 @@
-package com.themyntt.dStore.utils;
+package com.themyntt.dStore;
 
 import com.themyntt.dStore.entity.UserEntity;
 
@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class Utils {
+public class Api {
     public UserEntity parseUserEntity(String response) {
         System.out.println("response: " + response);
         if (response.isEmpty() || response == null) {
