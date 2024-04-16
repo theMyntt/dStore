@@ -1,8 +1,6 @@
 package com.themyntt.dStore;
 
-import com.sun.tools.javac.Main;
 import com.themyntt.dStore.entity.UserEntity;
-import com.themyntt.dStore.utils.Utils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +25,9 @@ public class App extends JFrame {
     private JButton seeCollaboratorsButton;
     private JPanel NewProductPage;
     private JButton backToHomeButton;
-    private Utils util;
+    private JPanel NewUserPage;
+    private Api util;
+    private String name;
 
     public App() {
         setTitle("dStore");
@@ -35,7 +35,7 @@ public class App extends JFrame {
         setContentPane(MainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        util = new Utils();
+        util = new Api();
 
         LoginBtn.addActionListener(new ActionListener() {
             @Override
@@ -49,6 +49,7 @@ public class App extends JFrame {
                     if (user != null) {
                         JOptionPane.showMessageDialog(null, "Welcome " + user.name + "!");
 
+                        name = user.name;
                         EmailField.setText("");
                         PasswordField.setText("");
                         HomeName.setText("Welcome, " + user.name);
@@ -90,6 +91,19 @@ public class App extends JFrame {
                 MainPanel.add(HomePage);
                 MainPanel.revalidate();
                 MainPanel.repaint();
+            }
+        });
+        newClientUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (name.equals(null) || !name.toLowerCase().equals("admin")) {
+                    JOptionPane.showMessageDialog(null, "You dont have permission to this.");
+                } else {
+                    MainPanel.removeAll();
+                    MainPanel.add(NewUserPage);
+                    MainPanel.revalidate();
+                    MainPanel.repaint();
+                }
             }
         });
     }
